@@ -1,2 +1,2 @@
-This is a software built on
+This software is built on
 [Blockly](https://github.com/google/blockly)
