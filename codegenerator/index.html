@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>String code generator</title>
+  <script src="blockly_compressed.js"></script>
+  <script src="stringcode.js"></script>
+  <script src="blocks_compressed.js"></script>
+  <script src="msg/js/en.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+  body {
+    background-color: #EDEDED;
+    font-family: sans-serif;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 140%;
+  }
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .example {
+    float: right;
+  }
+  </style>
+</head>
+<body>
+  <h1>String code generator | <small>Go <a href="../index.html">back</a></small></h1>
+  <p>Made with <a href="https://developers.google.com/blockly" target="_blank">Blockly</a></p>
+  <div id="blocklyDiv" style="height: 680px; width: 70%; float: left; "></div>
+  <div class="example">
+    <div class="card">
+      <h6 class="text-center">Example</h6>
+      <p>Structure for <code>{IF(STARTSWITH(name, 'a') ,  'It starts with a',  '')}</code></p>
+      <img src="example.png"></img>
+    </div>
+  </div>
+
+  <script src="blocks.js"></script>
+  <br>
+  <textarea id="output" style="width: 50%; height: 10%;"></textarea><br>
+  <button class="button" onclick="run()">Generate code</button>
+  <button class="button" onclick="select()">Select code</button>
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Functions">
+      <block type="controls_ifelse"></block>
+      <block type="text_print"></block>
+      <block type="logic_negate"></block>
+    </category>
+    <category name="Checks">
+      <block type="check_startswith"></block>
+      <block type="check_endswith"></block>
+      <block type="check_equals"></block>
+      <block type="check_notequals"></block>
+      <block type="check_greater"></block>
+      <block type="check_greatereq"></block>
+      <block type="check_less"></block>
+      <block type="check_lesseq"></block>
+    </category>
+    <category name="Inputs">
+      <block type="math_number"></block>
+      <block type="text"></block>
+      <block type="input_parameter"></block>
+      <block type="input_true"></block>
+      <block type="input_empty"></block>
+    </category>
+    <category name="Input Operations">
+      <block type="math_arithmetic"></block>
+      <block type="math_modulo"></block>
+      <block type="text_join"></block>
+    </category>
+  </xml>
+
+
+  <script>
+  var workspace = Blockly.inject('blocklyDiv',
+  {media: 'media/',
+  toolbox: document.getElementById('toolbox')});
+
+  var run = function(){
+    Blockly.SC.addReservedWords('code');
+    var code = Blockly.SC.workspaceToCode(workspace);
+
+    document.getElementById("output").value = "{"+code+"}";
+  };
+
+
+  var select = function() {
+    var toCopy = document.getElementById("output");
+    toCopy.select();
+    toCopy.selectionRange(0,999999);
+  };
+  </script>
+
+</body>
+</html>
