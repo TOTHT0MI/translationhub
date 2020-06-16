@@ -12,7 +12,7 @@ Blockly.Blocks['input_empty'] = {
   init: function() {
     this.jsonInit({
       "message0": 'EMPTY',
-      "output": "Boolean",
+      "output": "String",
       "colour": 200,
       "tooltip": "Returns empty value."
     });
