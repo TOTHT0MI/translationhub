@@ -154,7 +154,10 @@ Blockly.SC.logic_operation = function(a) {
 
 Blockly.SC.logic_negate = function(a) {
     var b = Blockly.SC.ORDER_LOGICAL_NOT;
-    return ["NOT(" + (Blockly.SC.valueToCode(a, "BOOL", b) || "true")+")", b]
+    var value = Blockly.SC.valueToCode(a, "BOOL", b);//(Blockly.SC.valueToCode(a, "BOOL", b) || "true");
+    if (value.includes("(") && value.includes(")"))
+      return ["NOT" + value, b]
+    return ["NOT(" + value+")", b]
 };
 Blockly.SC.logic_boolean = function(a) {
     return ["TRUE" == a.getFieldValue("BOOL") ? "true" : "false", Blockly.SC.ORDER_ATOMIC]
