@@ -1,0 +1,134 @@
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #EDEDED;
+    overflow: hidden;
+  }
+  .background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  .vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    align-items: center;
+  }
+  .spacer {
+    height: 100px;
+  }
+
+  .dark {
+    transition: 1s ease;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+  }
+
+  .dark:hover {
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+  }
+
+
+  .button {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <canvas class="background"></canvas>
+  <div class="jumbotron vertical-center text-center">
+    <!--Title-->
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <h1>Translation Hub</h1>
+        <h6>Unofficial projects for the CubeCraft Translation Team!</h6>
+        <h6>Created to help the life of the members.</h6>
+        <h6>Made by TOTHTOMI with &hearts;!</h6>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <div class="row spacer"></div>
+
+    <!--Cards-->
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <div class="card dark">
+          <h3 class="card-header">Activity generator</h3>
+          <div class="card-body">
+            <p>It is hard to collect information about your work, when the time comes to write an activity report?
+              Well, with this you can enter your work right after you've finished it. When the time comes you can easily generate an activity report.
+            </p><br>
+            <a href="#" class="button disabled">Soon...</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card dark">
+          <h3 class="card-header">String generator</h3>
+          <div class="card-body">
+            <p>We all know, that the current code in strings is a little confusing and hard to understand. We all had/have some problems and questions regarding it.<br>
+              Help yourself out now!
+            </p><br>
+            <a href="codegenerator/index.html" class="button">Check out</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <div class="row spacer"></div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <h6>This project can have some bugs, if you find one, please report it to me in DMs!</h6>
+        <h6>Tutorials for this project is planned, however I didn't have time to do them for now.</h6>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+  </div>
+  <script>
+  window.onload= function() {
+    Particles.init({
+      selector: '.background',
+      connectParticles: true,
+      maxParticles: 200
+    });
+  };
+  </script>
+</body>
+</html>
