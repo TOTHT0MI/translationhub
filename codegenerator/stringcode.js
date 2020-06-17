@@ -187,7 +187,7 @@ Blockly.SC.math_arithmetic = function(a) {
 Blockly.SC.math_modulo = function(a) {
     var b = Blockly.SC.valueToCode(a, "DIVIDEND", Blockly.SC.ORDER_MODULUS) || "0";
     a = Blockly.SC.valueToCode(a, "DIVISOR", Blockly.SC.ORDER_MODULUS) || "0";
-    return ["MOD("+b + ", " + a+") ", Blockly.SC.ORDER_MODULUS]
+    return ["MOD("+b + ", " + a+")", Blockly.SC.ORDER_MODULUS]
 };
 //------------------Checks---------------------
 Blockly.SC.checks = {};
@@ -202,10 +202,10 @@ Blockly.SC.check_startswith = function(a) {
       newtext2 += ",'"+text2array[i]+"'";
     }
 
-    return ["STARTSWITH("+text+", "+newtext2+") ", Blockly.SC.ORDER_NONE];
+    return ["STARTSWITH("+text+", "+newtext2+")", Blockly.SC.ORDER_NONE];
   }
 
-  return ["STARTSWITH("+text+", '"+text2+"') ", Blockly.SC.ORDER_NONE];
+  return ["STARTSWITH("+text+", '"+text2+"')", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_endswith = function(a) {
   var text = Blockly.SC.valueToCode(a, "TEXT", Blockly.SC.ORDER_NONE)
@@ -218,52 +218,52 @@ Blockly.SC.check_endswith = function(a) {
       newtext2 += ",'"+text2array[i]+"'";
     }
 
-    return ["ENDSWITH("+text+", "+newtext2+") ", Blockly.SC.ORDER_NONE];
+    return ["ENDSWITH("+text+", "+newtext2+")", Blockly.SC.ORDER_NONE];
   }
 
-  return ["ENDSWITH("+text+", '"+text2+"') ", Blockly.SC.ORDER_NONE];
+  return ["ENDSWITH("+text+", '"+text2+"')", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_equals = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
-  return ["EQ("+text+","+text2+") ", Blockly.SC.ORDER_NONE];
+  return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_notequals = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
-  return ["NE("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["NE("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greater = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
-  return ["GT("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["GT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greatereq = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
-  return ["GTEQ("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["GTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_less = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
-  return ["LT("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["LT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_lesseq = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
-  return ["LTEQ("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["LTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_equals = function(a) {
   var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
   var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
-  return ["EQ("+text+","+text2+") ", Blockly.SC.ORDER_NONE]
+  return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 //------------------Texts---------------------
 Blockly.SC.texts = {};
@@ -285,7 +285,7 @@ Blockly.SC.text_join = function(a) {
         default:
             b = Array(a.itemCount_);
             for (var c = 0; c < a.itemCount_; c++) b[c] = Blockly.SC.valueToCode(a, "ADD" + c, Blockly.SC.ORDER_COMMA) || "''";
-            a = "CONCAT(" + b.join(",") + ") ";
+            a = "CONCAT(" + b.join(",") + ")";
             return [a, Blockly.SC.ORDER_FUNCTION_CALL]
     }
 };
