@@ -78,7 +78,7 @@ Blockly.SC.scrub_ = function(a, b, c) {
     var d = "";
     if (!a.outputConnection || !a.outputConnection.targetConnection) {
         var e = a.getCommentText();
-        e && (e = Blockly.utils.string.wrap(e, Blockly.SC.COMMENT_WRAP - 3), d += Blockly.SC.prefixLines(e + "\n", "// "));
+        e && (e = Blockly.utils.string.wrap(e, Blockly.SC.COMMENT_WRAP - 3), d += Blockly.SC.prefixLines(e, "// "));
         for (var f = 0; f < a.inputList.length; f++) a.inputList[f].type == Blockly.INPUT_VALUE && (e = a.inputList[f].connection.targetBlock()) && (e = Blockly.SC.allNestedComments(e)) && (d += Blockly.SC.prefixLines(e, "// "))
     }
     a = a.nextConnection && a.nextConnection.targetBlock();
@@ -120,7 +120,7 @@ Blockly.SC.controls_if = function(a) {
         ++b
     } while (a.getInput("IF" + b));
     if (a.getInput("ELSE") || Blockly.SC.STATEMENT_SUFFIX) e = Blockly.SC.statementToCode(a, "ELSE"), Blockly.SC.STATEMENT_SUFFIX && (e = Blockly.SC.prefixLines(Blockly.SC.injectId(Blockly.SC.STATEMENT_SUFFIX, a), Blockly.SC.INDENT) + e), c += "," + e;
-    return c+")";
+    return c+") ";
 };
 
 Blockly.SC.controls_ifelse = Blockly.SC.controls_if;
@@ -160,7 +160,7 @@ Blockly.SC.logic_negate = function(a) {
     return ["NOT(" + value+")", b]//["NOT(" + value+")", b]
 };
 Blockly.SC.logic_boolean = function(a) {
-    return ["TRUE" == a.getFieldValue("BOOL") ? "true" : "false", Blockly.SC.ORDER_ATOMIC]
+    return ["TRUE" == a.getFieldValue("BOOL") ? "true" : "false", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.input_true = function(a) {
   return ["TRUE()",Blockly.SC.ORDER_NONE];
@@ -208,7 +208,7 @@ Blockly.SC.check_startswith = function(a) {
   return ["STARTSWITH("+text+", '"+text2+"')", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_endswith = function(a) {
-  var text = Blockly.SC.valueToCode(a, "TEXT", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "TEXT", Blockly.SC.ORDER_ATOMIC)
   var text2 = a.getFieldValue("VAR");
   if (text2.includes(",")) {
     var text2array = text2.split(",");
@@ -224,51 +224,51 @@ Blockly.SC.check_endswith = function(a) {
   return ["ENDSWITH("+text+", '"+text2+"')", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_equals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
 
   return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_notequals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
 
   return ["NE("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greater = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
 
   return ["GT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greatereq = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
 
   return ["GTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_less = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
 
   return ["LT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_lesseq = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
 
   return ["LTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_equals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
 
   return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 //------------------Texts---------------------
 Blockly.SC.texts = {};
 Blockly.SC.text = function(a) {
-    return [Blockly.SC.quote_(a.getFieldValue("TEXT")), Blockly.SC.ORDER_ATOMIC];
+    return [Blockly.SC.quote_(a.getFieldValue("TEXT")), Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.input_parameter = function(a) {
     return [a.getFieldValue("TEXT"), Blockly.SC.ORDER_NONE];
@@ -277,25 +277,19 @@ Blockly.SC.input_empty = function(a) {
     return ["''", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.text_join = function(a) {
-    switch (a.itemCount_) {
-        case 0:
-            return ["", Blockly.SC.ORDER_ATOMIC];
-        case 1:
-            return a = "CONCAT("+Blockly.SC.valueToCode(a, "ADD0", Blockly.SC.ORDER_NONE) || "''", a = Blockly.SC.text.forceString_(a)+")", [a, Blockly.SC.ORDER_FUNCTION_CALL];
-        default:
-            b = Array(a.itemCount_);
-            for (var c = 0; c < a.itemCount_; c++) b[c] = Blockly.SC.valueToCode(a, "ADD" + c, Blockly.SC.ORDER_COMMA) || "''";
-            a = "CONCAT(" + b.join(",") + ")";
-            return [a, Blockly.SC.ORDER_FUNCTION_CALL]
-    }
+    var b = Array(a.itemCount_);
+    for (var c = 0; c < a.itemCount_; c++) b[c] = Blockly.SC.valueToCode(a, "ADD" + c, Blockly.SC.ORDER_NONE) || "''";
+    a = "CONCAT(" + b.join(",") + ")";
+    return [a, Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.text_print = function(a) {
-    return Blockly.SC.valueToCode(a, "TEXT", Blockly.SC.ORDER_NONE);
+    var value = Blockly.SC.valueToCode(a, "TEXT", Blockly.SC.ORDER_NONE);
+    return value+" ";
 };
 //------------------Variables---------------------
 Blockly.SC.variables = {};
 Blockly.SC.variables_get = function(a) {
-    return [Blockly.SC.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.SC.ORDER_ATOMIC]
+    return [Blockly.SC.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.variables_set = function(a) {
     var b = Blockly.SC.valueToCode(a, "VALUE", Blockly.SC.ORDER_ASSIGNMENT) || "0";

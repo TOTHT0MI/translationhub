@@ -36,7 +36,7 @@
   <h1>String code generator | <small>Go <a href="../index.html">back</a></small></h1>
   <p>Made with <a href="https://developers.google.com/blockly" target="_blank">Blockly</a> | Note, that some of the features aren't here yet, but I'm working on them!<br>
     Please check the output, to make sure it's correct!<br>
-    When creating a list like "1,2,3,4" make sure there are no spaces after the commas!</p>
+    When creating a list like "1,2,3,4" make sure there are no spaces after the commas! This generator is not intended to create very complicated codes, those might break it! Keep it simple.</p>
   <div id="blocklyDiv" style="height: 680px; width: 70%; float: left; "></div>
   <div class="example">
     <div class="card">
@@ -91,7 +91,7 @@
     Blockly.SC.addReservedWords('code');
     var code = Blockly.SC.workspaceToCode(workspace);
 
-    document.getElementById("output").value = "{"+code+"}";
+    document.getElementById("output").value = code;
   };
 
 
