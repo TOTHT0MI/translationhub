@@ -224,44 +224,44 @@ Blockly.SC.check_endswith = function(a) {
   return ["ENDSWITH("+text+", '"+text2+"')", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_equals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
   return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE];
 };
 Blockly.SC.check_notequals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
   return ["NE("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greater = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
   return ["GT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_greatereq = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
   return ["GTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_less = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
   return ["LT("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_lesseq = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "CHECK", Blockly.SC.ORDER_NONE)
 
   return ["LTEQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
 Blockly.SC.check_equals = function(a) {
-  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_ATOMIC)
-  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_ATOMIC)
+  var text = Blockly.SC.valueToCode(a, "VAR1", Blockly.SC.ORDER_NONE)
+  var text2 = Blockly.SC.valueToCode(a, "VAR2", Blockly.SC.ORDER_NONE)
 
   return ["EQ("+text+","+text2+")", Blockly.SC.ORDER_NONE]
 };
