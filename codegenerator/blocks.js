@@ -136,7 +136,7 @@ Blockly.Blocks['input_parameter'] = {
           "check": "String"
         }
       ],
-      "output": "String",
+      "output": ["String","Number"],
       "colour": 250,
       "tooltip": "Returns a parameter name."
     });
